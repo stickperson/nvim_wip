@@ -14,7 +14,7 @@ local sources = {
    -- b.formatting.prettier,
 
    -- Lua
-   -- b.formatting.stylua,
+   b.formatting.stylua,
 
    -- Shell
    b.formatting.shfmt,
