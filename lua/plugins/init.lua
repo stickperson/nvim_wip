@@ -24,16 +24,11 @@ local plugins = {
   },
 
   ["kyazdani42/nvim-web-devicons"] = {
-    -- after = "ui",
     module = "nvim-web-devicons",
-    config = function()
-      require("plugins.configs.others").devicons()
-    end,
   },
   ["rmehri01/onenord.nvim"] = {},
 
   ["nvim-lualine/lualine.nvim"] = {
-    -- after = "rmehri01/onenord.nvim",
     config = function()
       require('lualine').setup {
         options = {

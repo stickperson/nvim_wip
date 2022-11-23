@@ -103,23 +103,12 @@ M.gitsigns = function()
   end
 
   local options = {
-    signs = {
-      add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
-      change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
-      delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
-      topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-      changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
-    },
     on_attach = function (bufnr)
       utils.load_mappings("gitsigns", { buffer = bufnr })
     end
   }
 
-  options = load_override(options, "lewis6991/gitsigns.nvim")
   gitsigns.setup(options)
-end
-
-M.devicons = function()
 end
 
 M.packer_init = function()
