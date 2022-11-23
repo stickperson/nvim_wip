@@ -57,11 +57,9 @@ local options = {
 		},
 	},
 
-	extensions_list = { "themes", "terms" },
+	extensions_list = { "fzf", "themes", "terms" },
 }
 
--- check for any override
-options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
 telescope.setup(options)
 
 -- load extensions

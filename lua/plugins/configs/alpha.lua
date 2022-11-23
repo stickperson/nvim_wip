@@ -79,8 +79,6 @@ local options = {
 	headerPaddingBottom = { type = "padding", val = 2 },
 }
 
-options = require("core.utils").load_override(options, "goolord/alpha-nvim")
-
 alpha.setup({
 	layout = {
 		options.headerPaddingTop,

@@ -11,15 +11,6 @@ if not present then
 	return
 end
 
-vim.api.nvim_create_augroup("_mason", { clear = true })
-vim.api.nvim_create_autocmd("Filetype", {
-	pattern = "mason",
-	callback = function()
-		-- require("base46").load_highlight "mason"
-	end,
-	group = "_mason",
-})
-
 local options = {
 	ui = {
 		icons = {
@@ -64,8 +55,3 @@ mlsp.setup({
 	automatic_installation = true,
 	ensure_installed = servers,
 })
-
--- local lspconfig = require "lspconfig"
--- for _, server in ipairs(servers) do
---   lspconfig[server].setup {}
--- end

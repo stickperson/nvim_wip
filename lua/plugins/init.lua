@@ -84,7 +84,6 @@ local plugins = {
 	-- lsp stuff
 	["williamboman/mason.nvim"] = {
 		requires = { "williamboman/mason-lspconfig.nvim" },
-		-- cmd = require("core.lazy_load").mason_cmds,
 		config = function()
 			require("plugins.configs.mason")
 		end,
@@ -143,7 +142,6 @@ local plugins = {
 	},
 
 	["goolord/alpha-nvim"] = {
-		disable = true,
 		config = function()
 			require("plugins.configs.alpha")
 		end,
@@ -195,6 +193,10 @@ local plugins = {
 		end,
 	},
 
+  ["nvim-telescope/telescope-fzf-native.nvim"] = {
+    run = "make"
+  },
+
 	-- Only load whichkey after all the gui
 	["folke/which-key.nvim"] = {
 		module = "which-key",
@@ -238,24 +240,4 @@ if present then
 
 	packer.init(init_options)
 	packer.startup({ final_table })
-	-- packer.startup(function(use)
-	--   for _, plugin in pairs(final_table) do
-	--     use(plugin)
-	--   end
-	-- end)
 end
--- return require('packer').startup(function(use)
--- 	for _, plugin in pairs(final_table) do
--- 		use(plugin)
--- 	end
---   -- use 'wbthomason/packer.nvim'
---   -- My plugins here
---   -- use 'foo1/bar1.nvim'
---   -- use 'foo2/bar2.nvim'
---
---   -- Automatically set up your configuration after cloning packer.nvim
---   -- Put this at the end after all plugins
---   -- if packer_bootstrap then
---   --   require('packer').sync()
---   -- end
--- end)
