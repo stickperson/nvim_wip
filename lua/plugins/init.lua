@@ -42,10 +42,11 @@ local plugins = {
 	["akinsho/bufferline.nvim"] = {
 		config = function()
 			require("plugins.configs.bufferline")
+			require("core.utils").load_mappings("bufferline")
 		end,
 	},
 
-	-- ["moll/vim-bbye"] = {},
+	["moll/vim-bbye"] = {},
 
 	["lukas-reineke/indent-blankline.nvim"] = {
 		opt = true,

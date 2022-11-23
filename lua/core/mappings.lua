@@ -359,4 +359,19 @@ M.gitsigns = {
 	},
 }
 
+M.bufferline = {
+	plugin = true,
+
+	n = {
+		-- cycle through buffers
+		["<TAB>"] = { "<cmd> BufferLineCycleNext <CR>", "goto next buffer" },
+
+		["<S-Tab>"] = { "<cmd> BufferLineCyclePrev <CR>", "goto prev buffer" },
+
+		-- pick buffers via numbers
+		["<Bslash>"] = { "<cmd> BufferLinePick <CR>", "Pick buffer" },
+		["<leader>x"] = { "<cmd> Bdelete!<CR>", "Close buffer" },
+	},
+}
+
 return M
