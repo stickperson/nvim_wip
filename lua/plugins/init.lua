@@ -211,7 +211,7 @@ local final_table = {}
 
 for key, val in pairs(plugins) do
 	if val and type(val) == "table" then
-		plugins[key] = val.rm_default_opts and user_plugins[key] or plugins[key]
+		plugins[key] = val.rm_default_opts or plugins[key]
 		plugins[key][1] = key
 		final_table[#final_table + 1] = plugins[key]
 	end
