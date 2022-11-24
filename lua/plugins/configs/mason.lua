@@ -5,8 +5,8 @@ if not present then
 	return
 end
 
-local present, mlsp = pcall(require, "mason-lspconfig")
-if not present then
+local ok, mlsp = pcall(require, "mason-lspconfig")
+if not ok then
 	vim.notify("mason-lspconfig not installed")
 	return
 end
@@ -34,13 +34,10 @@ local options = {
 	max_concurrent_installers = 10,
 }
 
--- vim.api.nvim_create_user_command("MasonInstallAll", function()
---   vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
--- end, {})
-
 mason.setup(options)
 local servers = {
 	"bashls",
+	"diagnosticls",
 	"dockerls",
 	"jedi_language_server",
 	"jsonls",

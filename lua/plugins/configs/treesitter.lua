@@ -6,9 +6,9 @@ end
 
 local options = {
 	ensure_installed = {
-    "dockerfile",
-    "hcl",
-    "json",
+		"dockerfile",
+		"hcl",
+		"json",
 		"lua",
 		"python",
 	},
