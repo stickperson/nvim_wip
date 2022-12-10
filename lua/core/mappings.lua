@@ -374,4 +374,26 @@ M.bufferline = {
 	},
 }
 
+M.dap = {
+  n = {
+    ["<leader>dc"] = {"<cmd> DapContinue <CR>", "dap continue"},
+    ["<leader>do"] = {"<cmd> DapStepOver <CR>", "dap step over"},
+    -- ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>", "dap toggle breakpoint"},
+    ["<leader>db"] = {
+      function ()
+        require("dap").toggle_breakpoint()
+      end, "dap toggle breakpoint"},
+  }
+}
+
+M.dap_python = {
+  n = {
+    ["<leader>dm"] = {
+      function ()
+        require('dap-python').test_method()
+      end, "test method"
+    }
+  }
+}
+
 return M

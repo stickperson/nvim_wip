@@ -1,8 +1,8 @@
 local opt = vim.opt
 local g = vim.g
--- vim.cmd "colorscheme onenord"
 local onenord_exists, onenord = pcall(require, "onenord")
 if onenord_exists then
+	vim.cmd "colorscheme onenord"
 	onenord.setup({
 		fade_nc = true,
 		styles = {
@@ -12,9 +12,6 @@ if onenord_exists then
 			--   functions = 'italic',
 			-- variables = 'bold',
 			-- diagnostics = 'bold',
-		},
-		disable = {
-			background = true,
 		},
 	})
 end

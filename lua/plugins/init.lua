@@ -208,6 +208,35 @@ local plugins = {
 			require("core.utils").load_mappings("whichkey")
 		end,
 	},
+
+	-- DAP
+  ["mfussenegger/nvim-dap"] = {
+    module = "dap",
+    config = function()
+			require("plugins.configs.dap")
+    end,
+  },
+
+  -- Debugger UI
+  ["rcarriga/nvim-dap-ui"] = {
+    after = "nvim-dap",
+    config = function()
+			require("plugins.configs.dap_ui")
+    end,
+  },
+  -- dap manager
+  ["jayp0521/mason-nvim-dap.nvim"] = {
+    after = "nvim-dap",
+    config = function()
+			require("plugins.configs.mason_dap_python")
+    end,
+  },
+  ["mfussenegger/nvim-dap-python"] = {
+    after = "nvim-dap",
+    config = function ()
+			require("plugins.configs.dap_python")
+    end
+  },
 }
 
 local final_table = {}
