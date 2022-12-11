@@ -34,6 +34,22 @@ local options = {
 	max_concurrent_installers = 10,
 }
 
+local ensure_installed = {
+	"autopep8",
+	"black",
+	"debugpy",
+	"flake8",
+	"gopls",
+	"hadolint",
+	"mypy",
+	"stylua",
+}
+
+vim.api.nvim_create_user_command("MasonInstallAll", function()
+  vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))
+end, {})
+
+
 mason.setup(options)
 local servers = {
 	"bashls",
@@ -41,6 +57,7 @@ local servers = {
 	"dockerls",
 	"jedi_language_server",
 	"jsonls",
+	-- "lua-language-server",
 	"sqls",
 	"sumneko_lua",
 	"terraformls",
