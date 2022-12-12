@@ -98,6 +98,8 @@ M.gitsigns = function()
 	end
 
 	local options = {
+		numhl = true,
+		current_line_blame = true,
 		on_attach = function(bufnr)
 			utils.load_mappings("gitsigns", { buffer = bufnr })
 		end,

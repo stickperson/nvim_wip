@@ -38,7 +38,7 @@ M.capabilities.textDocument.completion.completionItem = {
 
 local servers = {
 	"bashls",
-	"diagnosticls",
+	-- "diagnosticls",
 	"dockerls",
 	"jedi_language_server",
 	"jsonls",

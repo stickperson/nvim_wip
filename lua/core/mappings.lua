@@ -248,8 +248,41 @@ M.telescope = {
 		-- pick a hidden term
 		["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
 
-		-- theme switcher
-		["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
+    ["<leader>tf"] = {
+      function ()
+        if not require("nvim-tree.view").is_visible() then
+          return
+        end
+        local node = require("nvim-tree.lib").get_node_at_cursor()
+
+        require("telescope.builtin").find_files {
+          shorten_path = true,
+          cwd = node.absolute_path,
+          prompt_title = "~ Find files in directory ~",
+          hidden = true,
+        }
+      end,
+      "Find files in directory selected in nvim-tree"
+    },
+    ["<leader>tw"] = {
+      function ()
+        if not require("nvim-tree.view").is_visible() then
+          return
+        end
+        local node = require("nvim-tree.lib").get_node_at_cursor()
+
+        require("telescope.builtin").live_grep {
+          shorten_path = true,
+          cwd = node.absolute_path,
+          prompt_title = "~ Live grep in directory ~",
+          hidden = true,
+        }
+      end,
+      "Live grep in directory selected in nvim-tree"
+    },
+    ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "lsp diagnostics" },
+    ["<leader>tm"] = { "<cmd> Telescope marks <CR>", "list marks" },
+    ["<leader>tr"] = { "<cmd> Telescope registers <CR>", "list registers" },
 	},
 }
 
