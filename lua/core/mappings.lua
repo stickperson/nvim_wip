@@ -94,77 +94,70 @@ M.lspconfig = {
 	-- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
 	n = {
-		["gD"] = {
+		["lD"] = {
 			function()
 				vim.lsp.buf.declaration()
 			end,
 			"lsp declaration",
 		},
 
-		["gd"] = {
+		["ld"] = {
 			function()
 				vim.lsp.buf.definition()
 			end,
 			"lsp definition",
 		},
 
-		["K"] = {
+		["lh"] = {
 			function()
 				vim.lsp.buf.hover()
 			end,
 			"lsp hover",
 		},
 
-		["gi"] = {
+		["li"] = {
 			function()
 				vim.lsp.buf.implementation()
 			end,
 			"lsp implementation",
 		},
 
-		["<leader>ls"] = {
+		["ls"] = {
 			function()
 				vim.lsp.buf.signature_help()
 			end,
 			"lsp signature_help",
 		},
 
-		["<leader>D"] = {
+		["llD"] = {
 			function()
 				vim.lsp.buf.type_definition()
 			end,
 			"lsp definition type",
 		},
 
-		["<leader>ra"] = {
-			function()
-				require("nvchad_ui.renamer").open()
-			end,
-			"lsp rename",
-		},
-
-		["<leader>ca"] = {
+		["lca"] = {
 			function()
 				vim.lsp.buf.code_action()
 			end,
 			"lsp code_action",
 		},
 
-		["gr"] = {
+		["lr"] = {
 			function()
 				vim.lsp.buf.references()
 			end,
 			"lsp references",
 		},
 
-		["<leader>f"] = {
+		["df"] = {
 			function()
 				vim.diagnostic.open_float()
 			end,
 			"floating diagnostic",
 		},
 
-		["[d"] = {
+		["d["] = {
 			function()
 				vim.diagnostic.goto_prev()
 			end,
@@ -178,35 +171,35 @@ M.lspconfig = {
 			"goto_next",
 		},
 
-		["<leader>q"] = {
+		["dq"] = {
 			function()
 				vim.diagnostic.setloclist()
 			end,
 			"diagnostic setloclist",
 		},
 
-		["<leader>fm"] = {
+		["lf"] = {
 			function()
 				vim.lsp.buf.format({ async = true })
 			end,
 			"lsp formatting",
 		},
 
-		["<leader>wa"] = {
+		["lwa"] = {
 			function()
 				vim.lsp.buf.add_workspace_folder()
 			end,
 			"add workspace folder",
 		},
 
-		["<leader>wr"] = {
+		["lwr"] = {
 			function()
 				vim.lsp.buf.remove_workspace_folder()
 			end,
 			"remove workspace folder",
 		},
 
-		["<leader>wl"] = {
+		["lwl"] = {
 			function()
 				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 			end,
@@ -248,41 +241,41 @@ M.telescope = {
 		-- pick a hidden term
 		["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
 
-    ["<leader>tf"] = {
-      function ()
-        if not require("nvim-tree.view").is_visible() then
-          return
-        end
-        local node = require("nvim-tree.lib").get_node_at_cursor()
+		["<leader>tf"] = {
+			function()
+				if not require("nvim-tree.view").is_visible() then
+					return
+				end
+				local node = require("nvim-tree.lib").get_node_at_cursor()
 
-        require("telescope.builtin").find_files {
-          shorten_path = true,
-          cwd = node.absolute_path,
-          prompt_title = "~ Find files in directory ~",
-          hidden = true,
-        }
-      end,
-      "Find files in directory selected in nvim-tree"
-    },
-    ["<leader>tw"] = {
-      function ()
-        if not require("nvim-tree.view").is_visible() then
-          return
-        end
-        local node = require("nvim-tree.lib").get_node_at_cursor()
+				require("telescope.builtin").find_files({
+					shorten_path = true,
+					cwd = node.absolute_path,
+					prompt_title = "~ Find files in directory ~",
+					hidden = true,
+				})
+			end,
+			"Find files in directory selected in nvim-tree",
+		},
+		["<leader>tw"] = {
+			function()
+				if not require("nvim-tree.view").is_visible() then
+					return
+				end
+				local node = require("nvim-tree.lib").get_node_at_cursor()
 
-        require("telescope.builtin").live_grep {
-          shorten_path = true,
-          cwd = node.absolute_path,
-          prompt_title = "~ Live grep in directory ~",
-          hidden = true,
-        }
-      end,
-      "Live grep in directory selected in nvim-tree"
-    },
-    ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "lsp diagnostics" },
-    ["<leader>tm"] = { "<cmd> Telescope marks <CR>", "list marks" },
-    ["<leader>tr"] = { "<cmd> Telescope registers <CR>", "list registers" },
+				require("telescope.builtin").live_grep({
+					shorten_path = true,
+					cwd = node.absolute_path,
+					prompt_title = "~ Live grep in directory ~",
+					hidden = true,
+				})
+			end,
+			"Live grep in directory selected in nvim-tree",
+		},
+		["<leader>ld"] = { "<cmd> Telescope diagnostics <CR>", "lsp diagnostics" },
+		["<leader>tm"] = { "<cmd> Telescope marks <CR>", "list marks" },
+		["<leader>tr"] = { "<cmd> Telescope registers <CR>", "list registers" },
 	},
 }
 
@@ -408,25 +401,28 @@ M.bufferline = {
 }
 
 M.dap = {
-  n = {
-    ["<leader>dc"] = {"<cmd> DapContinue <CR>", "dap continue"},
-    ["<leader>do"] = {"<cmd> DapStepOver <CR>", "dap step over"},
-    -- ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>", "dap toggle breakpoint"},
-    ["<leader>db"] = {
-      function ()
-        require("dap").toggle_breakpoint()
-      end, "dap toggle breakpoint"},
-  }
+	n = {
+		["<leader>dc"] = { "<cmd> DapContinue <CR>", "dap continue" },
+		["<leader>do"] = { "<cmd> DapStepOver <CR>", "dap step over" },
+		-- ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>", "dap toggle breakpoint"},
+		["<leader>db"] = {
+			function()
+				require("dap").toggle_breakpoint()
+			end,
+			"dap toggle breakpoint",
+		},
+	},
 }
 
 M.dap_python = {
-  n = {
-    ["<leader>dm"] = {
-      function ()
-        require('dap-python').test_method()
-      end, "test method"
-    }
-  }
+	n = {
+		["<leader>dm"] = {
+			function()
+				require("dap-python").test_method()
+			end,
+			"test method",
+		},
+	},
 }
 
 return M
