@@ -18,7 +18,7 @@ local options = {
       "--column",
       "--smart-case",
     },
-    prompt_prefix = "   ",
+    prompt_prefix = " >  ",
     selection_caret = "  ",
     entry_prefix = "  ",
     initial_mode = "insert",
@@ -57,7 +57,23 @@ local options = {
     },
   },
 
-  extensions_list = { "fzf", "themes", "terms" },
+  extensions_list = {
+    "fzf",
+    "harpoon",
+    "terraform_doc",
+  },
+  pickers = {
+    help_tags = {
+      mappings = {
+        i = {
+          ["<CR>"] = "select_vertical",
+        },
+        n = {
+          ["<CR>"] = "select_vertical",
+        },
+      },
+    },
+  },
 }
 
 telescope.setup(options)

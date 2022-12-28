@@ -149,6 +149,12 @@ M.lspconfig = {
       end,
       "lsp references",
     },
+    ["<leader>rn"] = {
+      function()
+        vim.lsp.buf.rename()
+      end,
+      "[R]e[n]ame",
+    },
 
     ["df"] = {
       function()
@@ -434,13 +440,66 @@ M.harpoon = {
       end,
       "harpoon add file",
     },
-    ["<leader>hv"] = {
+    ["<leader>hv"] = { "<cmd> Telescope harpoon marks <CR>", "harpoon toggle quick menu" },
+  },
+}
+
+M.luasnip = {
+  i = {
+    ["<C-k>"] = {
       function()
-        require("harpoon.ui").toggle_quick_menu()
+        local luasnip = require("luasnip")
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        end
       end,
-      "harpoon add file",
+      "luasnip jump or expand",
+    },
+    ["<C-j>"] = {
+      function()
+        local luasnip = require("luasnip")
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        end
+      end,
+      "luasnip jump backwards",
+    },
+    ["<C-l>"] = {
+      function()
+        local luasnip = require("luasnip")
+        if luasnip.choice_active() then
+          luasnip.change_choice(1)
+        end
+      end,
+      "luasnip select list of options",
     },
   },
+  s = {
+    ["<C-k>"] = {
+      function()
+        local luasnip = require("luasnip")
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        end
+      end,
+      "luasnip jump or expand",
+    },
+    ["<C-j>"] = {
+      function()
+        local luasnip = require("luasnip")
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        end
+      end,
+      "luasnip jump backwards",
+    },
+  },
+}
+
+M.undotree = {
+	n = {
+		["<leader>u"] = { "<cmd>UndotreeToggle<CR>", "[U]ndotree toggle"},
+	}
 }
 
 return M

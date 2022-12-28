@@ -34,10 +34,18 @@ local plugins = {
         options = {
           theme = "onenord",
         },
+        sections = {
+					-- include path in filename
+          lualine_c = { { "filename", path = 1  }},
+        },
+        inactive_sections = {
+          lualine_c = { { "filename", path = 1  }},
+        },
       })
     end,
   },
 
+  -- Start bufferline
   -- Must come after devicons
   ["akinsho/bufferline.nvim"] = {
     config = function()
@@ -46,7 +54,9 @@ local plugins = {
     end,
   },
 
+  -- Improved buffer handling
   ["moll/vim-bbye"] = {},
+  -- End bufferline
 
   ["lukas-reineke/indent-blankline.nvim"] = {
     opt = true,
@@ -58,6 +68,8 @@ local plugins = {
       require("plugins.configs.others").blankline()
     end,
   },
+
+  -- Start treesitter
   ["nvim-treesitter/nvim-treesitter"] = {
     module = "nvim-treesitter",
     setup = function()
@@ -69,6 +81,16 @@ local plugins = {
       require("plugins.configs.treesitter")
     end,
   },
+
+  ["nvim-treesitter/nvim-treesitter-textobjects"] = {
+    run = ":TSUpdate",
+    after = "nvim-treesitter",
+  },
+
+  ["p00f/nvim-ts-rainbow"] = {
+    after = "nvim-treesitter",
+  },
+  -- End treesitter
 
   -- git stuff
   ["lewis6991/gitsigns.nvim"] = {
@@ -232,27 +254,40 @@ local plugins = {
   },
   -- End DAP
 
-  -- Experimenting
+  ["ANGkeith/telescope-terraform-doc.nvim"] = {},
+
   ["ThePrimeagen/harpoon"] = {
     config = function()
       require("core.utils").load_mappings("harpoon")
     end,
   },
 
-  ["nvim-treesitter/nvim-treesitter-textobjects"] = {
-    run = ":TSUpdate",
-    after = "nvim-treesitter",
-  },
-
-  ["p00f/nvim-ts-rainbow"] = {
-    after = "nvim-treesitter",
-  },
-
+  -- Experimenting
   ["shortcuts/no-neck-pain.nvim"] = {
     config = function()
       require("no-neck-pain").setup()
     end,
   },
+
+  ["mbbill/undotree"] = {
+    cmd = "UndotreeToggle",
+    config = function()
+      require("core.utils").load_mappings("undotree")
+    end,
+  },
+
+  ["phaazon/mind.nvim"] = {
+    branch = "v2.2",
+    cmd = {
+      "MindOpenMain",
+    },
+    config = function()
+      require("mind").setup()
+    end,
+  },
+
+	-- Improved UI hooks. E.g. lsp rename
+  ["stevearc/dressing.nvim"] = {},
 }
 
 local final_table = {}

@@ -8,3 +8,4 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd("PackerSync")
 end
 require("core.utils").load_mappings()
+pcall(require, "work")
