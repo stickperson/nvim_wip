@@ -11,6 +11,7 @@ local options = {
     "json",
     "lua",
     "python",
+    "terraform",
   },
 
   highlight = {

@@ -497,9 +497,9 @@ M.luasnip = {
 }
 
 M.undotree = {
-	n = {
-		["<leader>u"] = { "<cmd>UndotreeToggle<CR>", "[U]ndotree toggle"},
-	}
+  n = {
+    ["<leader>u"] = { "<cmd>UndotreeToggle<CR>", "[U]ndotree toggle" },
+  },
 }
 
 return M

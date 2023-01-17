@@ -35,11 +35,11 @@ local plugins = {
           theme = "onenord",
         },
         sections = {
-					-- include path in filename
-          lualine_c = { { "filename", path = 1  }},
+          -- include path in filename
+          lualine_c = { { "filename", path = 1 } },
         },
         inactive_sections = {
-          lualine_c = { { "filename", path = 1  }},
+          lualine_c = { { "filename", path = 1 } },
         },
       })
     end,
@@ -256,6 +256,8 @@ local plugins = {
 
   ["ANGkeith/telescope-terraform-doc.nvim"] = {},
 
+  ["hashivim/vim-terraform"] = {},
+
   ["ThePrimeagen/harpoon"] = {
     config = function()
       require("core.utils").load_mappings("harpoon")
@@ -286,7 +288,7 @@ local plugins = {
     end,
   },
 
-	-- Improved UI hooks. E.g. lsp rename
+  -- Improved UI hooks. E.g. lsp rename
   ["stevearc/dressing.nvim"] = {},
 }
 

@@ -43,6 +43,7 @@ local servers = {
   "jedi_language_server",
   "jsonls",
   "sqls",
+  -- "stylua",
   "sumneko_lua",
   "terraformls",
   "tflint",

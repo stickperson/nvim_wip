@@ -58,6 +58,7 @@ local servers = {
   "jsonls",
   -- "lua-language-server",
   "sqls",
+  -- "stylua",
   "sumneko_lua",
   "terraformls",
   "tflint",
