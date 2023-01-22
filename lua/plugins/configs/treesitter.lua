@@ -8,10 +8,12 @@ local options = {
   ensure_installed = {
     "dockerfile",
     "hcl",
+    "help",
     "json",
     "lua",
     "python",
     "terraform",
+    "vim",
   },
 
   highlight = {
