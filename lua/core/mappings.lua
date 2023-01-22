@@ -239,6 +239,7 @@ M.telescope = {
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
     ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
+    ["<leader>gs"] = { "<cmd> Telescope grep_string <CR>", "grep string" },
 
     -- git
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
@@ -434,6 +435,18 @@ M.dap_python = {
 M.harpoon = {
   plugin = true,
   n = {
+    ["<leader>hc"] = {
+      function()
+        require("harpoon.mark").clear_all()
+      end,
+      "harpoon clear all marks",
+    },
+    ["<leader>hd"] = {
+      function()
+        require("harpoon.mark").rm_file()
+      end,
+      "harpoon remove file",
+    },
     ["<leader>hm"] = {
       function()
         require("harpoon.mark").add_file()
