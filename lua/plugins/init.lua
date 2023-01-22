@@ -83,8 +83,8 @@ local plugins = {
   },
 
   ["nvim-treesitter/nvim-treesitter-textobjects"] = {
-    run = ":TSUpdate",
-    after = "nvim-treesitter",
+    -- run = ":TSUpdate",
+    -- after = "nvim-treesitter",
   },
 
   ["p00f/nvim-ts-rainbow"] = {
@@ -207,6 +207,7 @@ local plugins = {
 
   ["nvim-telescope/telescope.nvim"] = {
     cmd = "Telescope",
+    module = "telescope.builtin",
     config = function()
       require("plugins.configs.telescope")
     end,
@@ -259,7 +260,9 @@ local plugins = {
   ["hashivim/vim-terraform"] = {},
 
   ["ThePrimeagen/harpoon"] = {
-    config = function()
+    after = "telescope.nvim",
+    module = "harpoon.mark",
+    setup = function()
       require("core.utils").load_mappings("harpoon")
     end,
   },
