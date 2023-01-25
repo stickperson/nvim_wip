@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  nvim:
+    build: .
+    volumes:
+      - ./lazyvim/:/root/.config/nvim/
+      - lazy_cache:/root/.local/share/nvim
+      - ./lua/plugins/:/root/.config/nvim/plugs/:ro
+    command: nvim
+
+volumes:
+  lazy_cache:
