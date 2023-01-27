@@ -9,11 +9,34 @@ local utils = require("core.utils")
 
 -- export on_attach & capabilities for custom lspconfigs
 
-M.on_attach = function(client, bufnr)
-  client.server_capabilities.documentFormattingProvider = false
-  client.server_capabilities.documentRangeFormattingProvider = false
+function M.format()
+  local buf = vim.api.nvim_get_current_buf()
+  local ft = vim.bo[buf].filetype
+  local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
 
+  vim.lsp.buf.format(vim.tbl_deep_extend("force", {
+    bufnr = buf,
+    filter = function(client)
+      if have_nls then
+        return client.name == "null-ls"
+      end
+      return client.name ~= "null-ls"
+    end,
+  }, {}))
+end
+
+M.on_attach = function(client, bufnr)
   utils.load_mappings("lspconfig", { buffer = bufnr })
+
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("LspFormat." .. bufnr, {}),
+      buffer = bufnr,
+      callback = function()
+        M.format()
+      end,
+    })
+  end
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
